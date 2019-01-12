@@ -1,0 +1,8 @@
+{
+  "short_name": "razzle-react-redux-observable-found",
+  "name": "razzle-react-redux-observable-found",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

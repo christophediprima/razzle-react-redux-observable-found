@@ -2,8 +2,6 @@
 
 > Bootstrap Razzle full SRR React App with [Redux-Observable](https://redux-observable.js.org/) and [Found](https://github.com/4Catalyzer/found)
 
-[![NPM](https://img.shields.io/npm/v/razzle-react-redux-observable-found.svg)](https://www.npmjs.com/package/razzle-react-redux-observable-found) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-
 ## Install
 
 ```bash

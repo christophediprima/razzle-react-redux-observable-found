@@ -1,6 +1,6 @@
 {
-  "name": "razzle-examples-with-afterjs",
-  "version": "2.4.0",
+  "name": "with-redux-observable",
+  "version": "2.4.1",
   "license": "MIT",
   "scripts": {
     "start": "razzle start",
@@ -11,7 +11,6 @@
   "dependencies": {
     "@christophediprima/razzle-react-redux-observable-found": "^1.0.0-alpha.8",
     "@jaredpalmer/after": "latest",
-    "@types/serialize-javascript": "^1.5.0",
     "express": "^4.16.2",
     "farce": "^0.2.6",
     "found": "0.3",
@@ -39,6 +38,7 @@
     "@types/react-redux": "5",
     "@types/react-redux-epic": "^1.1.2",
     "@types/redux-logger": "^3.0.6",
+    "@types/serialize-javascript": "^1.5.0",
     "@types/webpack-env": "^1.13.6",
     "prettier-tslint": "^0.4.2",
     "ts-jest": "^23.10.5",

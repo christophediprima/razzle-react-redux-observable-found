@@ -18,4 +18,6 @@ yarn start
 
 ## Idea behind the example
 
-Bootstrap a full SRR React App with Redux-Observable and Found
+Bootstrap a full SRR React App with Redux-Observable and Found.
+
+See [christophediprima/razzle-react-redux-observable-found](https://github.com/christophediprima/razzle-react-redux-observable-found) library for more details.

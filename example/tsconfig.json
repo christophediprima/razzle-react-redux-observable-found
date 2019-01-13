@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "allowJs": false,
-    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
     "allowUnreachableCode": false,
-    "declaration": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
     "downlevelIteration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -11,20 +11,26 @@
     "lib": ["es6", "es2015", "es2017", "dom"],
     "module": "esnext",
     "moduleResolution": "node",
-    "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "outDir": "build",
-    "pretty": true,
     "sourceMap": true,
-    "strict": true,
     "strictNullChecks": true,
+    "strict": true,
+    "pretty": true,
     "suppressImplicitAnyIndexErrors": true,
-    "target": "es5"
+    "target": "es2016"
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "build", "dist", "example", "rollup.config.js"]
+  "exclude": [
+    "node_modules",
+    "build",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest",
+    "razzle.config.js",
+    "__tests__/coverage"
+  ],
+  "types": ["typePatches", "node", "webpack-env"]
 }

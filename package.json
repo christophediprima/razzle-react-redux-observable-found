@@ -1,6 +1,6 @@
 {
-  "name": "razzle-react-redux-observable-found",
-  "version": "1.0.0",
+  "name": "@christophediprima/razzle-react-redux-observable-found",
+  "version": "1.0.0-alpha.2",
   "description": "Bootstrap a full SRR React App with Redux-Observable and Found",
   "author": "christophediprima",
   "license": "MIT",
@@ -21,21 +21,54 @@
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
-  "dependencies": {},
-  "peerDependencies": {
+  "dependencies": {
+    "express": "^4.16.4",
+    "farce": "^0.2.6",
+    "found": "^0.3.18",
+    "found-scroll": "^0.1.5",
     "prop-types": "^15.5.4",
     "react": "^15.0.0 || ^16.0.0",
-    "react-dom": "^15.0.0 || ^16.0.0"
+    "react-dom": "^15.0.0 || ^16.0.0",
+    "react-redux": "5",
+    "react-redux-epic": "^1.1.0",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-observable": "^1.0.0",
+    "rxjs": "^6.3.3",
+    "serialize-javascript": "^1.6.1"
+  },
+  "peerDependencies": {
+    "express": "^4.16.4",
+    "farce": "^0.2.6",
+    "found": "^0.3.18",
+    "found-scroll": "^0.1.5",
+    "prop-types": "^15.5.4",
+    "react": "^15.0.0 || ^16.0.0",
+    "react-dom": "^15.0.0 || ^16.0.0",
+    "react-redux": "5",
+    "react-redux-epic": "^1.1.0",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-observable": "^1.0.0",
+    "rxjs": "^6.3.3",
+    "serialize-javascript": "^1.6.1"
   },
   "devDependencies": {
-    "@svgr/rollup": "^2.4.1",
+    "@svgr/rollup": "^4.1.0",
+    "@types/express": "^4.16.0",
     "@types/jest": "^23.1.5",
+    "@types/node": "^10.12.18",
     "@types/react": "^16.3.13",
     "@types/react-dom": "^16.0.5",
+    "@types/react-redux": "5",
+    "@types/react-redux-epic": "^1.1.2",
+    "@types/redux-logger": "^3.0.6",
+    "@types/serialize-javascript": "^1.5.0",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
     "cross-env": "^5.1.4",
-    "gh-pages": "^1.2.0",
+    "gh-pages": "^2.0.1",
+    "prettier-tslint": "^0.4.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts-ts": "^2.16.0",
@@ -47,7 +80,9 @@
     "rollup-plugin-postcss": "^1.6.2",
     "rollup-plugin-typescript2": "^0.17.0",
     "rollup-plugin-url": "^1.4.0",
-    "typescript": "^2.8.3"
+    "tslint": "^5.12.1",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.2.2"
   },
   "files": [
     "dist"

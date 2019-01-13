@@ -1,7 +1,7 @@
 {
   "name": "@christophediprima/razzle-react-redux-observable-found",
   "version": "1.0.0-alpha.8",
-  "description": "Bootstrap a full SRR React App with Redux-Observable and Found",
+  "description": "Bootstrap a full SRR React App with Typescript, Redux-Observable and Found",
   "author": "christophediprima",
   "license": "MIT",
   "repository": "christophediprima/razzle-react-redux-observable-found",

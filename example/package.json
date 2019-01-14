@@ -9,7 +9,7 @@
     "start:prod": "NODE_ENV=production node build/server.js"
   },
   "dependencies": {
-    "@christophediprima/razzle-react-redux-observable-found": "^1.0.0-alpha.8",
+    "@christophediprima/razzle-react-redux-observable-found": "link:..",
     "@jaredpalmer/after": "latest",
     "express": "^4.16.2",
     "farce": "^0.2.6",

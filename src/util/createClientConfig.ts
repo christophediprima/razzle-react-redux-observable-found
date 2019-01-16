@@ -1,6 +1,9 @@
 import { RouteConfig } from 'found';
 import { AnyAction, ReducersMapObject } from 'redux';
 
+import { createRenderer } from 'fela';
+import { rehydrate } from 'fela-dom';
+
 import createStore from '../core/createStore';
 import hydrate from '../core/hydrate';
 
@@ -26,6 +29,21 @@ export default <State = any, Action extends AnyAction = any>(
   });
 
   if (element) {
+    const renderer = createRenderer();
+
+    const rule = (props: any) => ({
+      backgroundColor: 'red',
+      color: 'blue',
+      fontSize: props.size,
+    });
+
+    renderer.renderRule(rule, { backgroundColor: 'yellow' }); // => a
+    renderer.renderRule(rule, { color: 'green' }); // => c
+    renderer.renderRule(rule, { size: '20px' }); // => b
+
+    renderer.renderStatic({ display: 'inline' }, 'div');
+
     hydrate({ element, found, store });
+    rehydrate(renderer);
   }
 };

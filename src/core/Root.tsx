@@ -2,8 +2,12 @@ const found = require('found');
 const foundScroll = require('found-scroll');
 
 import React from 'react';
-import { Provider } from 'react-redux';
+import { Provider as ReduxProvider } from 'react-redux';
 import { Store } from 'redux';
+
+import { RendererProvider as FelaProvider } from 'react-fela';
+
+import FelaRenderer from './felaRenderer';
 
 interface StaticContainerProps {
   shouldUpdate?: boolean;
@@ -58,10 +62,16 @@ interface RootProps<State extends any> {
   store: Store<State>;
 }
 
-const Root = <State extends any>({ renderArgs, store }: RootProps<State>): React.ReactElement<any> => (
-  <Provider store={store}>
-    <ConnectedRouter initialRenderArgs={renderArgs} matchContext={{ store }} resolver={found.resolver} />
-  </Provider>
-);
+const Root = <State extends any>({ renderArgs, store }: RootProps<State>): React.ReactElement<any> => {
+  const felaRenderer = FelaRenderer();
+
+  return (
+    <FelaProvider renderer={felaRenderer}>
+      <ReduxProvider store={store}>
+        <ConnectedRouter initialRenderArgs={renderArgs} matchContext={{ store }} resolver={found.resolver} />
+      </ReduxProvider>
+    </FelaProvider>
+  );
+};
 
 export default Root;

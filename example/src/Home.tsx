@@ -7,6 +7,10 @@ import logo from './react.svg';
 import './Home.css';
 
 class Home extends React.Component {
+  public componentDidMount() {
+    console.log(this.props);
+  }
+
   public render() {
     return (
       <div className="Home">

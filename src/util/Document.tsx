@@ -1,6 +1,12 @@
 import React from 'react';
 import serialize from 'serialize-javascript';
 
+interface StyleObject {
+  css: string;
+  rehydration: number;
+  type: string;
+}
+
 class Document extends React.Component<any, any> {
   public render() {
     const {
@@ -8,6 +14,7 @@ class Document extends React.Component<any, any> {
       html,
       // helmet,
       initialState,
+      cssSheetList,
     } = this.props;
     // get attributes from React Helmet
     // const htmlAttrs = helmet.htmlAttributes.toComponent();
@@ -21,9 +28,11 @@ class Document extends React.Component<any, any> {
           <meta charSet="utf-8" />
           <title>Welcome to Razzle</title>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          {/* {helmet.title.toComponent()}
-          {helmet.meta.toComponent()}
-          {helmet.link.toComponent()}{' '} */}
+          {cssSheetList.map(({ css, rehydration, type }: StyleObject, key: number) => (
+            <style key={key} type="text/css" data-fela-rehydration={rehydration} data-fela-type={type}>
+              {css}
+            </style>
+          ))}
         </head>
         <body
         // {...bodyAttrs}

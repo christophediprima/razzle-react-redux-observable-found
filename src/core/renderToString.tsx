@@ -12,27 +12,27 @@ export default async function<State = any>({
   found,
   store,
   wrappedEpic,
-  style,
+  styleSheets,
 }: {
   found: any;
   store: Store<State>;
   wrappedEpic: any;
-  style: any;
-}): Promise<{ html: string }> {
+  styleSheets: any;
+}): Promise<{ html: string; style: string }> {
   const renderArgs = await found.getRenderArgs(store);
 
   return new Promise(resolve => {
     renderToString(
-      <JssProvider registry={style}>
-        <Provider store={store}>
+      <Provider store={store}>
+        <JssProvider registry={styleSheets}>
           <foundServer.RouterProvider router={renderArgs.router}>
             {createRouterRender(renderArgs)}
           </foundServer.RouterProvider>
-        </Provider>
-      </JssProvider>,
+        </JssProvider>
+      </Provider>,
       wrappedEpic,
-    ).subscribe(({ markup }: { markup: string }) => {
-      resolve({ html: markup });
+    ).subscribe(({ markup }) => {
+      resolve({ html: markup, style: styleSheets.toString() });
     });
   });
 }

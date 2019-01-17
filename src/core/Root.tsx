@@ -63,11 +63,11 @@ interface RootProps<State extends any> {
 
 const Root = <State extends any>({ renderArgs, store, styleSheets }: RootProps<State>): React.ReactElement<any> => {
   return (
-    <JssProvider registry={styleSheets}>
-      <Provider store={store}>
+    <Provider store={store}>
+      <JssProvider registry={styleSheets}>
         <ConnectedRouter initialRenderArgs={renderArgs} matchContext={{ store }} resolver={found.resolver} />
-      </Provider>
-    </JssProvider>
+      </JssProvider>
+    </Provider>
   );
 };
 

@@ -8,7 +8,7 @@ class Document extends React.Component<any, any> {
       html,
       // helmet,
       initialState,
-      style,
+      styleSheets,
     } = this.props;
     // get attributes from React Helmet
     // const htmlAttrs = helmet.htmlAttributes.toComponent();
@@ -24,7 +24,9 @@ class Document extends React.Component<any, any> {
           <meta charSet="utf-8" />
           <title>Welcome to Razzle</title>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <style type="text/css">{style.toString()}</style>
+          <style type="text/css" id="server-side-styles">
+            {styleSheets.toString()}
+          </style>
           {/* {helmet.title.toComponent()}
           {helmet.meta.toComponent()}
           {helmet.link.toComponent()}{' '} */}

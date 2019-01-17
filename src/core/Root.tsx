@@ -5,6 +5,8 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
 
+const { JssProvider } = require('react-jss');
+
 interface StaticContainerProps {
   shouldUpdate?: boolean;
 }
@@ -56,12 +58,17 @@ const ConnectedRouter = found.createConnectedRouter({
 interface RootProps<State extends any> {
   renderArgs: any;
   store: Store<State>;
+  styleSheets: any;
 }
 
-const Root = <State extends any>({ renderArgs, store }: RootProps<State>): React.ReactElement<any> => (
-  <Provider store={store}>
-    <ConnectedRouter initialRenderArgs={renderArgs} matchContext={{ store }} resolver={found.resolver} />
-  </Provider>
-);
+const Root = <State extends any>({ renderArgs, store, styleSheets }: RootProps<State>): React.ReactElement<any> => {
+  return (
+    <JssProvider registry={styleSheets}>
+      <Provider store={store}>
+        <ConnectedRouter initialRenderArgs={renderArgs} matchContext={{ store }} resolver={found.resolver} />
+      </Provider>
+    </JssProvider>
+  );
+};
 
 export default Root;

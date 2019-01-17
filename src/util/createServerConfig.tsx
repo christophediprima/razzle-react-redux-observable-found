@@ -7,6 +7,10 @@ import createStore from '../core/createStore';
 import renderToString from '../core/renderToString';
 import Document from './Document';
 
+const { SheetsRegistry } = require('react-jss');
+
+const sheets = new SheetsRegistry();
+
 export default function<State = any, Action extends AnyAction = any>(
   initialState: State,
   razzleAssets: any,
@@ -26,8 +30,8 @@ export default function<State = any, Action extends AnyAction = any>(
     const { found, store, wrappedEpic } = createStore<State, Action>(storeArg);
 
     try {
-      const { html } = await renderToString({ found, store, wrappedEpic });
-      const document = <Document {...{ html, assets: razzleAssets, initialState: store.getState() }} />;
+      const { html } = await renderToString({ found, store, wrappedEpic, style: sheets });
+      const document = <Document {...{ html, assets: razzleAssets, initialState: store.getState(), style: sheets }} />;
       const staticMarkup = renderToStaticMarkup(document);
 
       res.send(staticMarkup);

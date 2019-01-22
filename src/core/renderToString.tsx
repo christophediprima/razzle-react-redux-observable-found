@@ -1,4 +1,8 @@
+const { createGenerateClassName, createMuiTheme, MuiThemeProvider } = require('@material-ui/core/styles');
 const foundServer = require('found/lib/server');
+const { JssProvider } = require('react-jss');
+
+import red from '@material-ui/core/colors/red';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { renderToString } from 'react-redux-epic';
@@ -6,7 +10,15 @@ import { Store } from 'redux';
 
 import { createRouterRender } from './Root';
 
-const { JssProvider } = require('react-jss');
+const theme = createMuiTheme({
+  palette: {
+    primary: red,
+    type: 'light',
+  },
+  typography: {
+    useNextVariants: true,
+  },
+});
 
 export default async function<State = any>({
   found,
@@ -21,13 +33,19 @@ export default async function<State = any>({
 }): Promise<{ html: string; style: string }> {
   const renderArgs = await found.getRenderArgs(store);
 
+  const generateClassName = createGenerateClassName();
+
+  const sheetsManager = new Map();
+
   return new Promise(resolve => {
     renderToString(
       <Provider store={store}>
-        <JssProvider registry={styleSheets}>
-          <foundServer.RouterProvider router={renderArgs.router}>
-            {createRouterRender(renderArgs)}
-          </foundServer.RouterProvider>
+        <JssProvider registry={styleSheets} generateClassName={generateClassName}>
+          <MuiThemeProvider theme={theme} sheetsManager={sheetsManager}>
+            <foundServer.RouterProvider router={renderArgs.router}>
+              {createRouterRender(renderArgs)}
+            </foundServer.RouterProvider>
+          </MuiThemeProvider>
         </JssProvider>
       </Provider>,
       wrappedEpic,

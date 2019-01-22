@@ -11,6 +11,7 @@
   "dependencies": {
     "@christophediprima/razzle-react-redux-observable-found": "link:..",
     "@jaredpalmer/after": "latest",
+    "@material-ui/core": "^3.9.0",
     "express": "^4.16.2",
     "farce": "^0.2.6",
     "found": "0.3",

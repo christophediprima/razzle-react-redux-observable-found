@@ -11,7 +11,7 @@ import {
   ReducersMapObject,
   Store,
 } from 'redux';
-import { createLogger } from 'redux-logger';
+// import { createLogger } from 'redux-logger';
 import { createEpicMiddleware, EpicMiddleware } from 'redux-observable';
 import { BehaviorSubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
@@ -77,8 +77,8 @@ export default <State = any, Action extends AnyAction = any>({
 
   const found = configureFound(routes, farceProtocol);
   const epicMiddleware = createEpicMiddleware();
-  const logger = createLogger({ collapsed: true }); // log every action to see what's happening behind the scenes.
-  const reduxMiddleware = applyMiddleware(actionToPlainObject, epicMiddleware, logger);
+  // const logger = createLogger({ collapsed: true }); // log every action to see what's happening behind the scenes.
+  const reduxMiddleware = applyMiddleware(actionToPlainObject, epicMiddleware /*logger*/);
   const combinedReducers = combineReducers({
     found: found.reducer as Reducer<any, OutputAction<Action>>,
     ...rootReducer,

@@ -5,7 +5,7 @@ import { AnyAction, ReducersMapObject } from 'redux';
 
 import createStore from '../core/createStore';
 import renderToString from '../core/renderToString';
-import Document from './Document';
+import DefaultDocument, { Props } from './Document';
 
 const { SheetsRegistry } = require('react-jss');
 
@@ -15,6 +15,8 @@ export default function<State = any, Action extends AnyAction = any>(
   rootEpic: any,
   rootReducer: ReducersMapObject<State, Action>,
   routes: any,
+  Document?: React.ComponentClass<Props>,
+  // Document?: React.ComponentClass = DefaultDocument,
 ) {
   return async (req: Request, res: Response) => {
     const storeArg = {
@@ -31,7 +33,15 @@ export default function<State = any, Action extends AnyAction = any>(
       const styleSheets = new SheetsRegistry();
 
       const { html } = await renderToString({ found, store, wrappedEpic, styleSheets });
-      const document = <Document {...{ html, assets: razzleAssets, initialState: store.getState(), styleSheets }} />;
+
+      const documentProps = {
+        assets: razzleAssets,
+        html,
+        initialState: store.getState(),
+        styleSheets,
+      };
+
+      const document = Document ? <Document {...documentProps} /> : <DefaultDocument {...documentProps} />;
       const staticMarkup = renderToStaticMarkup(document);
 
       res.send(staticMarkup);

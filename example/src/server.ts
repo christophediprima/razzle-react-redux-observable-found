@@ -28,7 +28,7 @@ const serverConfig = createServerConfig<State, Action, { styleSheets: any }>(
   rootEpic,
   rootReducer,
   routes,
-  { Component: Document, props: styleSheets },
+  { Component: Document, props: { styleSheets } },
 );
 
 server

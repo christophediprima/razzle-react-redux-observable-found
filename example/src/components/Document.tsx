@@ -1,7 +1,9 @@
 import { DocumentProps } from '@christophediprima/razzle-react-redux-observable-found';
 import React from 'react';
 
-class Document extends React.Component<DocumentProps & any, any> {
+import { SheetsRegistry } from 'react-jss';
+
+class Document extends React.Component<DocumentProps & { styleSheets: SheetsRegistry }, any> {
   public render() {
     const { assets, html, initialState, styleSheets } = this.props;
 

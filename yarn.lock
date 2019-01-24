@@ -897,7 +897,7 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
-"@types/jss@*", "@types/jss@^9.5.6", "@types/jss@^9.5.7":
+"@types/jss@^9.5.6", "@types/jss@^9.5.7":
   version "9.5.7"
   resolved "https://registry.yarnpkg.com/@types/jss/-/jss-9.5.7.tgz#fa57a6d0b38a3abef8a425e3eb6a53495cb9d5a0"
   integrity sha512-OZimStu2QdDMtZ0h72JXqvLVbWUjXd5ZLk8vxLmfuC/nM1AabRyyGoxSufnzixrbpEcVcyy/JV5qeQu2JnjVZw==
@@ -936,16 +936,6 @@
   integrity sha512-x6zUx9/42B5Kl2Vl9HlopV8JF64wLpX3c+Pst9kc1HgzrsH+mkehe/zmHMQTplIrR48H2gpU7ZqurQolYu8XBA==
   dependencies:
     "@types/react" "*"
-
-"@types/react-jss@^8.6.0":
-  version "8.6.0"
-  resolved "https://registry.yarnpkg.com/@types/react-jss/-/react-jss-8.6.0.tgz#ce8009fb65e1986431cec372dff18d7087cf7a48"
-  integrity sha512-kZvjHPPHJMKZqCgQWxNnYrBAsMquqj6J2ncIgG/Eq9AxNJobbPlCc0h2GtHe8Ap3aXi8Lgzj5JSWO9X5S2g8NQ==
-  dependencies:
-    "@types/jss" "*"
-    "@types/react" "*"
-    "@types/theming" "*"
-    csstype "^2.0.0"
 
 "@types/react-redux-epic@^1.1.2":
   version "1.1.2"
@@ -999,13 +989,6 @@
   dependencies:
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
-
-"@types/theming@*":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@types/theming/-/theming-1.3.2.tgz#063ee1918ca28e3e575c57aa57fe1b35db858965"
-  integrity sha512-hglGgki3jUbSjl1UB6vc8rsOyELRfH+VVIMyymoHRlUizdgWmWiwteH2jdltsHCVlAtSCmAh0nB71t9G41vhxQ==
-  dependencies:
-    "@types/react" "*"
 
 "@types/unist@*", "@types/unist@^2.0.0":
   version "2.0.2"

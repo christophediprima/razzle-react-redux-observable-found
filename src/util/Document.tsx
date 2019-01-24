@@ -1,4 +1,3 @@
-import { SheetsRegistry } from 'jss';
 import React from 'react';
 import serialize from 'serialize-javascript';
 
@@ -6,17 +5,15 @@ export interface DocumentProps {
   assets: any;
   html: string;
   initialState: any;
-  styleSheets: SheetsRegistry;
 }
 
-class Document extends React.Component<DocumentProps, any> {
+class Document extends React.Component<DocumentProps> {
   public render() {
     const {
       assets,
       html,
       // helmet,
       initialState,
-      styleSheets,
     } = this.props;
     // get attributes from React Helmet
     // const htmlAttrs = helmet.htmlAttributes.toComponent();
@@ -32,9 +29,6 @@ class Document extends React.Component<DocumentProps, any> {
           <meta charSet="utf-8" />
           <title>Welcome to Razzle</title>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <style type="text/css" id="server-side-styles">
-            {styleSheets.toString()}
-          </style>
           {/* {helmet.title.toComponent()}
           {helmet.meta.toComponent()}
           {helmet.link.toComponent()}{' '} */}

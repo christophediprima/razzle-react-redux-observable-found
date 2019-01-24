@@ -1,9 +1,6 @@
-const { createGenerateClassName, createMuiTheme, MuiThemeProvider } = require('@material-ui/core/styles');
 const found = require('found');
 const foundScroll = require('found-scroll');
-const { JssProvider } = require('react-jss');
 
-import purple from '@material-ui/core/colors/purple';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
@@ -59,29 +56,12 @@ const ConnectedRouter = found.createConnectedRouter({
 interface RootProps<State extends any> {
   renderArgs: any;
   store: Store<State>;
-  styleSheets: any;
 }
-
-const generateClassName = createGenerateClassName();
-
-const theme = createMuiTheme({
-  palette: {
-    primary: purple,
-    type: 'light',
-  },
-  typography: {
-    useNextVariants: true,
-  },
-});
 
 const Root = <State extends any>({ renderArgs, store }: RootProps<State>): React.ReactElement<any> => {
   return (
     <Provider store={store}>
-      <JssProvider generateClassName={generateClassName}>
-        <MuiThemeProvider theme={theme}>
-          <ConnectedRouter initialRenderArgs={renderArgs} matchContext={{ store }} resolver={found.resolver} />
-        </MuiThemeProvider>
-      </JssProvider>
+      <ConnectedRouter initialRenderArgs={renderArgs} matchContext={{ store }} resolver={found.resolver} />
     </Provider>
   );
 };

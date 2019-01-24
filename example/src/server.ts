@@ -1,5 +1,3 @@
-import React from 'react';
-
 import express from 'express';
 
 import { createServerConfig } from '@christophediprima/razzle-react-redux-observable-found';
@@ -11,7 +9,8 @@ import rootEpic from './core/rootEpic';
 import rootReducer from './core/rootReducer';
 import routes from './core/routes';
 
-import Document from './CustomDocument';
+import { styleSheets } from './components/App';
+import Document from './components/Document';
 
 const razzleAssets = require(process.env.RAZZLE_ASSETS_MANIFEST || '');
 const server = express();
@@ -23,26 +22,14 @@ const initialState = {
   },
 };
 
-class Providers extends React.Component {
-  render() {
-    return (
-      <React.Fragment>
-        <h1 style={{color: 'red'}}>yo</h1>
-
-        {this.props.children}
-      </React.Fragment>
-    )
-  }
-}
-
-const serverConfig = createServerConfig<State, Action>(
+const serverConfig = createServerConfig<State, Action, { styleSheets: any }>(
   initialState,
   razzleAssets,
   rootEpic,
   rootReducer,
   routes,
-  Providers,
   Document,
+  { styleSheets },
 );
 
 server

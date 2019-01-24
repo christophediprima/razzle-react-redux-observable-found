@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import React from 'react';
+import * as React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { AnyAction, ReducersMapObject } from 'redux';
 
@@ -7,16 +7,14 @@ import createStore from '../core/createStore';
 import renderToString from '../core/renderToString';
 import DefaultDocument, { DocumentProps } from './Document';
 
-const { SheetsRegistry } = require('react-jss');
-
-export default function<State = any, Action extends AnyAction = any>(
+export default function<State = any, Action extends AnyAction = any, DocumentExtraProps = any>(
   initialState: State,
   razzleAssets: any,
   rootEpic: any,
   rootReducer: ReducersMapObject<State, Action>,
   routes: any,
-  Providers: any,
-  Document?: React.ComponentClass<DocumentProps>,
+  Document?: React.ComponentType<DocumentProps & DocumentExtraProps>,
+  documentExtraProps?: DocumentExtraProps,
 ) {
   return async (req: Request, res: Response) => {
     const storeArg = {
@@ -30,18 +28,19 @@ export default function<State = any, Action extends AnyAction = any>(
     const { found, store, wrappedEpic } = createStore<State, Action>(storeArg);
 
     try {
-      const styleSheets = new SheetsRegistry();
-
-      const { html } = await renderToString({ found, store, wrappedEpic, styleSheets, Providers });
+      const { html } = await renderToString({ found, store, wrappedEpic });
 
       const documentProps = {
         assets: razzleAssets,
         html,
         initialState: store.getState(),
-        styleSheets,
       };
 
-      const document = Document ? <Document {...documentProps} /> : <DefaultDocument {...documentProps} />;
+      const document = Document ? (
+        <Document {...{ ...documentProps, ...documentExtraProps }} />
+      ) : (
+        <DefaultDocument {...documentProps} />
+      );
       const staticMarkup = renderToStaticMarkup(document);
 
       res.send(staticMarkup);

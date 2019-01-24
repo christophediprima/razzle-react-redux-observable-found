@@ -32,6 +32,7 @@ class Document extends React.Component<DocumentProps> {
           {/* {helmet.title.toComponent()}
           {helmet.meta.toComponent()}
           {helmet.link.toComponent()}{' '} */}
+          {assets.client.css ? <link rel="stylesheet" href="assets.client.css" /> : ''}
         </head>
         <body
         // {...bodyAttrs}

@@ -15,8 +15,8 @@ export default function<State = any, Action extends AnyAction = any>(
   rootEpic: any,
   rootReducer: ReducersMapObject<State, Action>,
   routes: any,
+  Providers: any,
   Document?: React.ComponentClass<DocumentProps>,
-  // Document?: React.ComponentClass = DefaultDocument,
 ) {
   return async (req: Request, res: Response) => {
     const storeArg = {
@@ -32,7 +32,7 @@ export default function<State = any, Action extends AnyAction = any>(
     try {
       const styleSheets = new SheetsRegistry();
 
-      const { html } = await renderToString({ found, store, wrappedEpic, styleSheets });
+      const { html } = await renderToString({ found, store, wrappedEpic, styleSheets, Providers });
 
       const documentProps = {
         assets: razzleAssets,

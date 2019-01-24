@@ -9,6 +9,9 @@ import rootEpic from './core/rootEpic';
 import rootReducer from './core/rootReducer';
 import routes from './core/routes';
 
+import { styleSheets } from './components/App';
+import Document from './components/Document';
+
 const razzleAssets = require(process.env.RAZZLE_ASSETS_MANIFEST || '');
 const server = express();
 
@@ -19,7 +22,14 @@ const initialState = {
   },
 };
 
-const serverConfig = createServerConfig<State, Action>(initialState, razzleAssets, rootEpic, rootReducer, routes);
+const serverConfig = createServerConfig<State, Action, { styleSheets: any }>({
+  document: { Component: Document, props: { styleSheets } },
+  initialState,
+  razzleAssets,
+  rootEpic,
+  rootReducer,
+  routes,
+});
 
 server
   .disable('x-powered-by')

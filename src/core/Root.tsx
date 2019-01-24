@@ -58,10 +58,12 @@ interface RootProps<State extends any> {
   store: Store<State>;
 }
 
-const Root = <State extends any>({ renderArgs, store }: RootProps<State>): React.ReactElement<any> => (
-  <Provider store={store}>
-    <ConnectedRouter initialRenderArgs={renderArgs} matchContext={{ store }} resolver={found.resolver} />
-  </Provider>
-);
+const Root = <State extends any>({ renderArgs, store }: RootProps<State>): React.ReactElement<any> => {
+  return (
+    <Provider store={store}>
+      <ConnectedRouter initialRenderArgs={renderArgs} matchContext={{ store }} resolver={found.resolver} />
+    </Provider>
+  );
+};
 
 export default Root;

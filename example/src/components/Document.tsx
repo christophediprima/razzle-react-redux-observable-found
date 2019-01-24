@@ -1,41 +1,25 @@
+import { DocumentProps } from '@christophediprima/razzle-react-redux-observable-found';
 import React from 'react';
-import serialize from 'serialize-javascript';
 
-export interface DocumentProps {
-  assets: any;
-  html: string;
-  initialState: any;
-}
+import { SheetsRegistry } from 'react-jss';
 
-class Document extends React.Component<DocumentProps> {
+class Document extends React.Component<DocumentProps & { styleSheets: SheetsRegistry }> {
   public render() {
-    const {
-      assets,
-      html,
-      // helmet,
-      initialState,
-    } = this.props;
-    // get attributes from React Helmet
-    // const htmlAttrs = helmet.htmlAttributes.toComponent();
-    // const bodyAttrs = helmet.bodyAttributes.toComponent();
+    const { assets, html, initialState, styleSheets } = this.props;
 
-    // console.log(styleSheets);
     return (
-      <html
-      // {...htmlAttrs}
-      >
+      <html>
         <head>
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta charSet="utf-8" />
           <title>Welcome to Razzle</title>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          {/* {helmet.title.toComponent()}
-          {helmet.meta.toComponent()}
-          {helmet.link.toComponent()}{' '} */}
+          <style type="text/css" id="server-side-styles">
+            {styleSheets.toString()}
+          </style>
         </head>
-        <body
-        // {...bodyAttrs}
-        >
+        <body>
+          <h1>hello from the custom Document</h1>
           <div
             id="root"
             dangerouslySetInnerHTML={{
@@ -46,7 +30,7 @@ class Document extends React.Component<DocumentProps> {
             id="server-app-state"
             type="application/json"
             dangerouslySetInnerHTML={{
-              __html: serialize({ initialState }),
+              __html: JSON.stringify({ initialState }),
             }}
           />
           <script type="text/javascript" src={assets.client.js} defer={true} crossOrigin="anonymous" />

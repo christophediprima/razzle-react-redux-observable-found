@@ -1,4 +1,5 @@
 const foundServer = require('found/lib/server');
+
 import React from 'react';
 import { Provider } from 'react-redux';
 import { renderToString } from 'react-redux-epic';
@@ -25,7 +26,7 @@ export default async function<State = any>({
         </foundServer.RouterProvider>
       </Provider>,
       wrappedEpic,
-    ).subscribe(({ markup }: { markup: string }) => {
+    ).subscribe(({ markup }) => {
       resolve({ html: markup });
     });
   });

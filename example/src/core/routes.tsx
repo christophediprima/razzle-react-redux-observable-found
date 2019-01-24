@@ -3,7 +3,7 @@ import React from 'react';
 
 import FetchBoards from './board/action/FetchBoards';
 const routes = (
-  <Route path="/">
+  <Route path="/" getComponent={() => import('../components/App').then(module => module.App)}>
     <Route
       getComponent={() => import('../Home').then(module => module.default)}
       getData={({ location, context }) =>

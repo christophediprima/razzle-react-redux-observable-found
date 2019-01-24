@@ -7,14 +7,16 @@ import createStore from '../core/createStore';
 import renderToString from '../core/renderToString';
 import DefaultDocument, { DocumentProps } from './Document';
 
-export default function<State = any, Action extends AnyAction = any, DocumentExtraProps = any>(
+export default function<State = any, Action extends AnyAction = any, DocumentExtraProps = undefined>(
   initialState: State,
   razzleAssets: any,
   rootEpic: any,
   rootReducer: ReducersMapObject<State, Action>,
   routes: any,
-  Document?: React.ComponentType<DocumentProps & DocumentExtraProps>,
-  documentExtraProps?: DocumentExtraProps,
+  document?: {
+    Component: React.ComponentType<DocumentProps & DocumentExtraProps>;
+    props: DocumentExtraProps;
+  },
 ) {
   return async (req: Request, res: Response) => {
     const storeArg = {
@@ -36,12 +38,12 @@ export default function<State = any, Action extends AnyAction = any, DocumentExt
         initialState: store.getState(),
       };
 
-      const document = Document ? (
-        <Document {...{ ...documentProps, ...documentExtraProps }} />
+      const component = document ? (
+        <document.Component {...{ ...document.props, ...documentProps }} />
       ) : (
         <DefaultDocument {...documentProps} />
       );
-      const staticMarkup = renderToStaticMarkup(document);
+      const staticMarkup = renderToStaticMarkup(component);
 
       res.send(staticMarkup);
     } catch (error) {

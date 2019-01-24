@@ -1,7 +1,7 @@
 import { Link } from 'found';
 import React from 'react';
 
-import FetchBoardsButton from './components/FetchBoardsButton';
+import FetchBoardsButton from './FetchBoardsButton';
 import logo from './react.svg';
 
 import './Home.css';

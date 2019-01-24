@@ -18,7 +18,7 @@ const theme = createMuiTheme({
 
 export const styleSheets = new SheetsRegistry();
 
-export const App: React.FunctionComponent<any> = ({ children }) => (
+export const Providers: React.FunctionComponent<any> = ({ children }) => (
   <JssProvider {...generateClassName} registry={styleSheets}>
     <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
   </JssProvider>

@@ -8,7 +8,7 @@
 npm install --save razzle-react-redux-observable-found
 ```
 
-## Usage
+## Basic Usage
 
 ```ts
 // server.ts
@@ -32,8 +32,8 @@ const initialState = {
     loading: false,
   },
 };
-// You can also write your own "createServerConfig" if you need to customize your Document.tsx and the props provided to that Document
-const serverConfig = createServerConfig<State, Action>(initialState, razzleAssets, rootEpic, rootReducer, routes);
+
+const serverConfig = createServerConfig<State, Action>({ initialState, razzleAssets, rootEpic, rootReducer, routes });
 
 server
   .disable('x-powered-by')
@@ -56,9 +56,10 @@ import rootEpic from './core/rootEpic';
 import rootReducer from './core/rootReducer';
 import routes from './core/routes';
 
-// If you changed your Document.tsx you may also have write your own "createClientConfig"
 createClientConfig<State, Action>(rootEpic, rootReducer, routes);
 ```
+
+Have a look at the example for usage with a custom document and extra providers!
 
 **razzle-react-redux-observable-found** is build with [create-react-library](https://github.com/transitive-bullshit/create-react-library)
 

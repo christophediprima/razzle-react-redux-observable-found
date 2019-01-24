@@ -9,8 +9,8 @@ import rootEpic from './core/rootEpic';
 import rootReducer from './core/rootReducer';
 import routes from './core/routes';
 
-import { styleSheets } from './components/App';
 import Document from './components/Document';
+import { styleSheets } from './components/Providers';
 
 const razzleAssets = require(process.env.RAZZLE_ASSETS_MANIFEST || '');
 const server = express();

@@ -2,8 +2,8 @@ import { Link } from 'found';
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { State as BoardState } from './core/board';
-import State from './core/State';
+import { State as BoardState } from '../core/board';
+import State from '../core/State';
 
 class About extends React.Component<{ board: BoardState }> {
   public render() {

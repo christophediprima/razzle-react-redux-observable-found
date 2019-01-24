@@ -3,9 +3,9 @@ import React from 'react';
 
 import FetchBoards from './board/action/FetchBoards';
 const routes = (
-  <Route path="/" getComponent={() => import('../components/App').then(module => module.App)}>
+  <Route path="/" getComponent={() => import('../components/Providers').then(module => module.Providers)}>
     <Route
-      getComponent={() => import('../Home').then(module => module.default)}
+      getComponent={() => import('../components/Home').then(module => module.default)}
       getData={({ location, context }) =>
         new Promise(resolve => {
           context.store.dispatch(new FetchBoards());
@@ -15,7 +15,7 @@ const routes = (
     />
     <Route
       path="/about"
-      getComponent={() => import('../About').then(module => module.default)}
+      getComponent={() => import('../components/About').then(module => module.default)}
       getData={({ location, context }) =>
         new Promise(resolve => {
           context.store.dispatch(new FetchBoards());

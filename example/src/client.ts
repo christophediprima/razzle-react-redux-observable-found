@@ -22,5 +22,6 @@ createClientConfig<State, Action>(rootEpic, rootReducer, routes);
 const jssStyles = document.getElementById('server-side-styles');
 
 if (jssStyles && jssStyles.parentNode) {
-  jssStyles.parentNode.removeChild(jssStyles);
+  // TODO: We have to wait for the style hydration before doing this
+  // jssStyles.parentNode.removeChild(jssStyles);
 }

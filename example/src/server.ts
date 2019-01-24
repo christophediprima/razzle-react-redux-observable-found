@@ -22,14 +22,14 @@ const initialState = {
   },
 };
 
-const serverConfig = createServerConfig<State, Action, { styleSheets: any }>(
+const serverConfig = createServerConfig<State, Action, { styleSheets: any }>({
+  document: { Component: Document, props: { styleSheets } },
   initialState,
   razzleAssets,
   rootEpic,
   rootReducer,
   routes,
-  { Component: Document, props: { styleSheets } },
-);
+});
 
 server
   .disable('x-powered-by')

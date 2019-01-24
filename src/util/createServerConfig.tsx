@@ -7,17 +7,24 @@ import createStore from '../core/createStore';
 import renderToString from '../core/renderToString';
 import DefaultDocument, { DocumentProps } from './Document';
 
-export default function<State = any, Action extends AnyAction = any, DocumentExtraProps = undefined>(
-  initialState: State,
-  razzleAssets: any,
-  rootEpic: any,
-  rootReducer: ReducersMapObject<State, Action>,
-  routes: any,
+export default function<State = any, Action extends AnyAction = any, DocumentExtraProps = undefined>({
+  initialState,
+  razzleAssets,
+  rootEpic,
+  rootReducer,
+  routes,
+  document,
+}: {
+  initialState: State;
+  razzleAssets: any;
+  rootEpic: any;
+  rootReducer: ReducersMapObject<State, Action>;
+  routes: any;
   document?: {
     Component: React.ComponentType<DocumentProps & DocumentExtraProps>;
     props: DocumentExtraProps;
-  },
-) {
+  };
+}) {
   return async (req: Request, res: Response) => {
     const storeArg = {
       initialState,

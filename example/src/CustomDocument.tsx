@@ -1,6 +1,7 @@
 import React from 'react';
+import { DocumentProps } from '@christophediprima/razzle-react-redux-observable-found';
 
-class Document extends React.Component<any, any> {
+class Document extends React.Component<DocumentProps & any, any> {
   public render() {
     const { assets, html, initialState, styleSheets } = this.props;
 

@@ -5,7 +5,7 @@ import { AnyAction, ReducersMapObject } from 'redux';
 
 import createStore from '../core/createStore';
 import renderToString from '../core/renderToString';
-import DefaultDocument, { Props } from './Document';
+import DefaultDocument, { DocumentProps } from './Document';
 
 const { SheetsRegistry } = require('react-jss');
 
@@ -15,7 +15,7 @@ export default function<State = any, Action extends AnyAction = any>(
   rootEpic: any,
   rootReducer: ReducersMapObject<State, Action>,
   routes: any,
-  Document?: React.ComponentClass<Props>,
+  Document?: React.ComponentClass<DocumentProps>,
   // Document?: React.ComponentClass = DefaultDocument,
 ) {
   return async (req: Request, res: Response) => {

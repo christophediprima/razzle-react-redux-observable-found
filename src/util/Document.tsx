@@ -2,14 +2,14 @@ import { SheetsRegistry } from 'jss';
 import React from 'react';
 import serialize from 'serialize-javascript';
 
-export interface Props {
+export interface DocumentProps {
   assets: any;
   html: string;
   initialState: any;
   styleSheets: SheetsRegistry;
 }
 
-class Document extends React.Component<Props, any> {
+class Document extends React.Component<DocumentProps, any> {
   public render() {
     const {
       assets,

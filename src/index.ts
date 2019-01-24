@@ -10,4 +10,4 @@ export { default as Root } from './core/Root';
 
 export { default as createClientConfig } from './util/createClientConfig';
 export { default as createServerConfig } from './util/createServerConfig';
-export { default as Document } from './util/Document';
+export { default as Document, DocumentProps } from './util/Document';

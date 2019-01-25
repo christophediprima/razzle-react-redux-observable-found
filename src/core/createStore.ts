@@ -11,7 +11,6 @@ import {
   ReducersMapObject,
   Store,
 } from 'redux';
-// import { createLogger } from 'redux-logger';
 import { createEpicMiddleware, EpicMiddleware } from 'redux-observable';
 import { BehaviorSubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
@@ -40,7 +39,9 @@ interface CreateStoreOutput<State = any, Action extends AnyAction = any> {
 }
 
 const compose =
-  typeof window === 'object' && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  typeof window === 'object' &&
+  (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
+  process.env.NODE_ENV === 'development'
     ? (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     : reduxCompose;
 
@@ -58,9 +59,12 @@ const wrapRootEpic = <Action extends AnyAction = any>(
     wrappedEpic = wrapRootEpicServer(rootEpic);
     epicMiddleware.run(wrappedEpic);
   } else {
-    wrappedEpic = new BehaviorSubject(rootEpic);
-
-    epicMiddleware.run(hotReloadingEpic(wrappedEpic));
+    if (process.env.NODE_ENV === 'development') {
+      wrappedEpic = new BehaviorSubject(rootEpic);
+      epicMiddleware.run(hotReloadingEpic(wrappedEpic));
+    } else {
+      epicMiddleware.run(rootEpic);
+    }
   }
 
   return wrappedEpic;
@@ -77,8 +81,7 @@ export default <State = any, Action extends AnyAction = any>({
 
   const found = configureFound(routes, farceProtocol);
   const epicMiddleware = createEpicMiddleware();
-  // const logger = createLogger({ collapsed: true }); // log every action to see what's happening behind the scenes.
-  const reduxMiddleware = applyMiddleware(actionToPlainObject, epicMiddleware /*logger*/);
+  const reduxMiddleware = applyMiddleware(actionToPlainObject, epicMiddleware);
   const combinedReducers = combineReducers({
     found: found.reducer as Reducer<any, OutputAction<Action>>,
     ...rootReducer,

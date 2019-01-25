@@ -2,7 +2,7 @@ import { purple } from '@material-ui/core/colors';
 import { createGenerateClassName, createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import * as React from 'react';
 
-const { JssProvider, SheetsRegistry } = require('react-jss');
+import { JssProvider, SheetsRegistry } from 'react-jss';
 
 const generateClassName = createGenerateClassName();
 

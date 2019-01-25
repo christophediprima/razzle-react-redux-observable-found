@@ -3,7 +3,11 @@ import React from 'react';
 
 import { SheetsRegistry } from 'react-jss';
 
-class Document extends React.Component<DocumentProps & { styleSheets: SheetsRegistry }> {
+export interface DocumentExtraProps {
+  styleSheets: SheetsRegistry;
+}
+
+class Document extends React.Component<DocumentProps & DocumentExtraProps> {
   public render() {
     const { assets, html, initialState, styleSheets } = this.props;
 

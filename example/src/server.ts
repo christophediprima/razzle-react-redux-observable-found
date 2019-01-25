@@ -9,7 +9,7 @@ import rootEpic from './core/rootEpic';
 import rootReducer from './core/rootReducer';
 import routes from './core/routes';
 
-import Document from './components/Document';
+import Document, { DocumentExtraProps } from './components/Document';
 import { styleSheets } from './components/Providers';
 
 const razzleAssets = require(process.env.RAZZLE_ASSETS_MANIFEST || '');
@@ -22,7 +22,7 @@ const initialState = {
   },
 };
 
-const serverConfig = createServerConfig<State, Action, { styleSheets: any }>({
+const serverConfig = createServerConfig<State, Action, DocumentExtraProps>({
   document: { Component: Document, props: { styleSheets } },
   initialState,
   razzleAssets,

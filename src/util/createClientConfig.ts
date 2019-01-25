@@ -2,13 +2,13 @@ import { RouteConfig } from 'found';
 import { AnyAction, ReducersMapObject } from 'redux';
 
 import createStore from '../core/createStore';
-import hydrate from '../core/hydrate';
+import hydrate, { CustomHydrate } from '../core/hydrate';
 
-// rename to hydrate
 export default <State = any, Action extends AnyAction = any>(
   rootEpic: any,
   rootReducer: ReducersMapObject<State, Action>,
   routes: RouteConfig,
+  customHydrate?: CustomHydrate,
 ) => {
   const initialState: State = JSON.parse(
     // param for the server state location
@@ -26,6 +26,6 @@ export default <State = any, Action extends AnyAction = any>(
   });
 
   if (element) {
-    hydrate({ element, found, store });
+    hydrate({ element, found, store, customHydrate });
   }
 };

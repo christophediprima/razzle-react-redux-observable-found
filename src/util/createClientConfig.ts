@@ -4,12 +4,11 @@ import { AnyAction, ReducersMapObject } from 'redux';
 import createStore from '../core/createStore';
 import hydrate from '../core/hydrate';
 
-// rename to hydrate
 export default <State = any, Action extends AnyAction = any>(
   rootEpic: any,
   rootReducer: ReducersMapObject<State, Action>,
   routes: RouteConfig,
-) => {
+): Promise<any> => {
   const initialState: State = JSON.parse(
     // param for the server state location
     (document.getElementById('server-app-state') || { textContent: '{}' }).textContent || '{}',
@@ -26,6 +25,8 @@ export default <State = any, Action extends AnyAction = any>(
   });
 
   if (element) {
-    hydrate({ element, found, store });
+    return hydrate({ element, found, store });
+  } else {
+    throw Error(`The mouting point for the application could not be found. DOM element: ${element}`);
   }
 };

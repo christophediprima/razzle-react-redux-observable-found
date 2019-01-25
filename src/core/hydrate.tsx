@@ -12,7 +12,7 @@ export default function<State = any>({
   element: HTMLElement;
   found: any;
   store: Store<State>;
-}) {
+}): Promise<any> {
   return found.getRenderArgs(store).then((renderArgs: any) => {
     return render(<Root renderArgs={renderArgs} store={store} />, element).subscribe();
   });

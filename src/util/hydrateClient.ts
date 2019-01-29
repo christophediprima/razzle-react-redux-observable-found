@@ -26,7 +26,6 @@ export default <State = any, Action extends AnyAction = any>(
 
   if (element) {
     return hydrate({ element, found, store });
-  } else {
-    throw Error(`The mouting point for the application could not be found. DOM element: ${element}`);
   }
+  throw Error('The mouting point for the application could not be found. DOM element: #root');
 };

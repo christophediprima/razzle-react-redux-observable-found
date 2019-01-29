@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { createServerConfig } from '@christophediprima/razzle-react-redux-observable-found';
+import { createServer } from '@christophediprima/razzle-react-redux-observable-found';
 
 import Action from './core/Action';
 import State from './core/State';
@@ -22,7 +22,7 @@ const initialState = {
   },
 };
 
-const serverConfig = createServerConfig<State, Action, DocumentExtraProps>({
+const serverConfig = createServer<State, Action, DocumentExtraProps>({
   document: { Component: Document, props: { styleSheets } },
   initialState,
   razzleAssets,

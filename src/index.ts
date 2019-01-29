@@ -8,6 +8,6 @@ export { default as OutputState } from './core/OutputState';
 export { default as renderToString } from './core/renderToString';
 export { default as Root } from './core/Root';
 
-export { default as createClientConfig } from './util/createClientConfig';
-export { default as createServerConfig } from './util/createServerConfig';
+export { default as hydrateClient } from './util/hydrateClient';
+export { default as createServer } from './util/createServer';
 export { default as Document, DocumentProps } from './util/Document';

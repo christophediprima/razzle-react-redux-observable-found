@@ -111,8 +111,21 @@
     to-fast-properties "^2.0.0"
 
 "@christophediprima/razzle-react-redux-observable-found@link:..":
-  version "0.0.0"
-  uid ""
+  version "1.0.0-alpha.14"
+  dependencies:
+    express "^4.16.4"
+    farce "^0.2.8"
+    found "^0.3.21"
+    found-scroll "^0.1.6"
+    react "^16.8.6"
+    react-dom "^16.8.6"
+    react-redux "5"
+    react-redux-epic "^1.1.0"
+    redux "^4.0.1"
+    redux-logger "^3.0.6"
+    redux-observable "^1.1.0"
+    rxjs "^6.4.0"
+    serialize-javascript "^1.6.1"
 
 "@material-ui/core@^3.9.3":
   version "3.9.3"
@@ -9173,9 +9186,9 @@ typescript@^3.3.4000:
   integrity sha512-jjOcCZvpkl2+z7JFn0yBOoLQyLoIkNZAs/fYJkUG6VKy6zLPHJGfQJYFHzibB6GJaF/8QrcECtlQ5cpvRHSMEA==
 
 ua-parser-js@^0.7.18:
-  version "0.7.19"
-  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.19.tgz#94151be4c0a7fb1d001af7022fdaca4642659e4b"
-  integrity sha512-T3PVJ6uz8i0HzPxOF9SWzWAlfN/DavlpQqepn22xgve/5QecC+XMCAtmUNnY7C9StehaV6exjUCI801lOI7QlQ==
+  version "0.7.28"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.28.tgz#8ba04e653f35ce210239c64661685bf9121dec31"
+  integrity sha512-6Gurc1n//gjp9eQNXjD9O3M/sMwVtN5S8Lv9bvOYBfKfDNiIIhqiyi01vMBO45u4zkDE420w/e0se7Vs+sIg+g==
 
 uglify-es@^3.3.4:
   version "3.3.9"
